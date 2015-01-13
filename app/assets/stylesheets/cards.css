@@ -1,0 +1,46 @@
+.cards {
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.cards-item {
+  width: 200px;
+  margin: 0 auto 20px;
+  border: 1px solid #777;
+  text-align: center;
+  box-shadow: 2px 2px 5px #000;
+}
+
+.cards-item hr {
+  margin: 0;
+  border-top: 1px solid #000;
+}
+
+.cards-text,
+.cards-date {
+  display: block;
+  margin: 10px 0;
+}
+
+.cards-text-original {
+  color: green;
+}
+
+.cards-text-translated {
+  color: red;
+}
+
+@media (min-width: 1200px) {
+  .cards-item {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left:50px;
+  }
+
+  .cards-item:first-child {
+    margin-left: 0;
+  }
+
+}
