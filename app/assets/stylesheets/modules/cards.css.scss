@@ -1,0 +1,51 @@
+$original-text-color: #279B61;
+$translated-text-color: #CC3333;
+
+.cards {
+  text-align: center;
+  font-size: 0;
+
+  &-item {
+    width: 200px;
+    margin: 0 auto 20px;
+    border: 1px solid #777;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #000;
+
+    & > hr {
+      margin: 0;
+      border-top: 1px solid #000;
+    }
+  }
+
+  &-text {
+    display: block;
+    margin: 10px 0;
+
+    &-original {
+      color: $original-text-color;
+    }
+
+    &-translated {
+      color: $translated-text-color;
+    }
+  }
+
+  &-date {
+    @extend .cards-text
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards {
+    margin-left: 50px;
+
+    &-item {
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      margin-right: 50px;
+    }
+  }
+}
