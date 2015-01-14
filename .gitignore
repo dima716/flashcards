@@ -17,3 +17,6 @@ config/database.yml
 /log/*
 !/log/.keep
 /tmp
+
+* Ignore test files
+/test/*
