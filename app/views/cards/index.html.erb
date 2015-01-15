@@ -2,11 +2,21 @@
 <ul class="cards">
   <% @cards.each do |card| %>
   <li class="cards-item">
-    <span class="cards-text cards-text-original"><%= card.original_text %></span>
+    <div class="cards-panel cards-text-original"><%= card.original_text %></div>
     <hr />
-    <span class="cards-text cards-text-translated"><%= card.translated_text %></span>
+    <div class="cards-panel cards-text-translated"><%= card.translated_text %></div>
     <hr />
-    <span class="cards-date">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></span>
-  </li>
-  <% end %>
+    <div class="cards-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
+    <hr />
+    <div class="cards-panel">
+      <%= link_to "Редактировать", edit_card_path(card), class: "cards-link" %>
+    </div>
+    <hr />
+    <div class="cards-panel">
+     <%= link_to "Удалить", card_path(card), class: "cards-link",
+     method: :delete,
+     data: { confirm: "Подвердить удаление ?" } %>
+   </div>
+ </li>
+ <% end %>
 </ul>
