@@ -17,6 +17,13 @@ class CardsController < ApplicationController
     end
   end
 
+  def destroy
+    @card = Card.find(params[:id])
+    @card.destroy
+
+    redirect_to cards_path
+  end
+
   private
     def card_params
       params.require(:card).permit(:original_text, :translated_text, :review_date)
