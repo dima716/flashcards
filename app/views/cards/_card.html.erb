@@ -1,0 +1,17 @@
+<li class="cards-item">
+  <div class="cards-panel cards-text-original"><%= card.original_text %></div>
+  <hr />
+  <div class="cards-panel cards-text-translated"><%= card.translated_text %></div>
+  <hr />
+  <div class="cards-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
+  <hr />
+  <div class="cards-panel">
+    <%= link_to "Редактировать", edit_card_path(card), class: "cards-link" %>
+  </div>
+  <hr />
+  <div class="cards-panel">
+    <%= link_to "Удалить", card_path(card), class: "cards-link",
+    method: :delete,
+    data: { confirm: "Подвердить удаление ?" } %>
+  </div>
+</li>

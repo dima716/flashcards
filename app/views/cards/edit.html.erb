@@ -1,30 +1,5 @@
 <h2>Редактирование карточки</h2>
 
-<%= form_for :card, url: card_path(@card), method: :patch do |f| %>
-  <% if @card.errors.any? %>
-    <% @card.errors.full_messages.each do |msg| %>
-      <div class="alert alert-danger" role="alert"><%= msg %></div>
-    <% end %>
-  <% end %>
-
-  <div class="input-group">
-    <%= f.label :original_text, "Оригинальный текст", class: "input-group-addon" %>
-    <%= f.text_field :original_text, class: "form-control" %>
-  </div>
-
-  <div class="input-group">
-    <%= f.label :translated_text, "Текст перевода", class: "input-group-addon" %>
-    <%= f.text_field :translated_text, class: "form-control" %>
-  </div>
-
-  <div class="input-group">
-    <%= f.label :review_date, "Дата повторения", class: "input-group-addon" %>
-    <%= f.date_field :review_date, class: "form-control" %>
-  </div>
-
-  <div class="input-group">
-    <%= f.submit "Сохранить", class: "btn btn-default" %>
-  </div>
-<% end %>
+<%= render partial: "form", locals: { submit_text: "Сохранить"} %>
 
 <%= link_to "Назад", cards_path, class: "cards-link" %>
