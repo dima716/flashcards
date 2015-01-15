@@ -7,7 +7,7 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Flashcards
-    class Application < Rails::Application
+  class Application < Rails::Application
 # Settings in config/environments/* take precedence over those specified here.
 # Application configuration should go into files in config/initializers
 # -- all .rb files in that directory are automatically loaded.
@@ -22,18 +22,17 @@ module Flashcards
 
 # Do not swallow errors in after_commit/after_rollback callbacks.
 
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+  ActionView::Base.field_error_proc = Proc.new do |html_tag|
     class_attr_index = html_tag.index 'class="'
 
     if class_attr_index
-        html_tag.insert class_attr_index+7, 'error '
+      html_tag.insert class_attr_index+7, 'error '
     else
-        html_tag.insert html_tag.index('>'), ' class="error"'
+      html_tag.insert html_tag.index('>'), ' class="error"'
     end
-end
+  end
 
-config.active_record.raise_in_transactional_callbacks = true
+  config.active_record.raise_in_transactional_callbacks = true
 
-end
-
+  end
 end
