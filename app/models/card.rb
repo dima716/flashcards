@@ -14,5 +14,5 @@ class Card < ActiveRecord::Base
     message: "%{value} не может быть пустым"
   }
 
-    validates_with GoodnessValidator
+  validates_with GoodnessValidator
 end
