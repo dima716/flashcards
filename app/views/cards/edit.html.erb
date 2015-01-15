@@ -2,15 +2,9 @@
 
 <%= form_for :card, url: card_path(@card), method: :patch do |f| %>
   <% if @card.errors.any? %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-      <span class="sr-only">Ошибка:</span>
-      <ul>
-        <% @card.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% @card.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger" role="alert"><%= msg %></div>
+    <% end %>
   <% end %>
 
   <div class="input-group">
@@ -31,7 +25,6 @@
   <div class="input-group">
     <%= f.submit "Сохранить", class: "btn btn-default" %>
   </div>
-
 <% end %>
 
 <%= link_to "Назад", cards_path, class: "cards-link" %>
