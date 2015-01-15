@@ -1,4 +1,11 @@
 class CardsController < ApplicationController
+  def create
+    @card = Card.new(card_params)
+
+    @card.save
+    redirect_to cards_path
+  end
+
   def index
     @cards = Card.all
   end
