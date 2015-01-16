@@ -38,7 +38,7 @@ class CardsController < ApplicationController
   private
 
   def get_card
-     @card = Card.find(params[:id])
+    @card = Card.find(params[:id])
   end
 
   def card_params
