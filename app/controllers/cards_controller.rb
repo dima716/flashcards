@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :get_card, only: [:edit, :update, :destroy]
+  before_action :get_card, only: [:edit, :update, :destroy, :check]
 
   def new
     @card = Card.new
@@ -19,22 +19,18 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
-  def show
-    if params[:user_text]
-      get_card
-      user_text = params[:user_text].mb_chars.downcase.to_s.strip.squeeze(" ")
-      translated_text = @card.translated_text.mb_chars.downcase.to_s.strip.squeeze(" ")
+  def random
+    get_random_card
+  end
 
-      if user_text == translated_text
-        flash.now[:notice] = "Правильно"
-        @card.review_date += 3
-        @card.save
-      else
-        flash.now[:notice] = "Неправильно"
-      end
+  def check
+    if @card.equale(params[:user_text])
+      flash[:notice] = "Правильно"
+    else
+      flash[:notice] = "Неправильно"
     end
 
-    get_random_card
+    redirect_to random_card_path
   end
 
   def edit

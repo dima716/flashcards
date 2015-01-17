@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  match "/", to: "cards#show", via: [:get, :post], as: "root"
   resources :cards
+  get "/", to: "cards#random", as: "random_card"
+  post "/", to: "cards#check", as: "check_card"
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".
