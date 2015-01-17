@@ -19,6 +19,24 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
+  def show
+    if params[:user_text]
+      get_card
+      user_text = params[:user_text].mb_chars.downcase.to_s.strip.squeeze(" ")
+      translated_text = @card.translated_text.mb_chars.downcase.to_s.strip.squeeze(" ")
+
+      if user_text == translated_text
+        flash.now[:notice] = "Правильно"
+        @card.review_date += 3
+        @card.save
+      else
+        flash.now[:notice] = "Неправильно"
+      end
+    end
+
+    get_random_card
+  end
+
   def edit
   end
 
@@ -39,6 +57,11 @@ class CardsController < ApplicationController
 
   def get_card
     @card = Card.find(params[:id])
+  end
+
+  def get_random_card
+    @cards = Card.review
+    @card = @cards.offset(rand(@cards.count)).first
   end
 
   def card_params
