@@ -1,18 +1,13 @@
 class Card < ActiveRecord::Base
+
   validates :original_text, :translated_text, presence: { message: "%{value} не может быть пустым" }
   validates_with TextsEqualityValidator
 
-  scope :review, -> { where("review_date <= ?", Date.today) }
+  scope :for_review, -> { where("review_date <= ?", Date.today).order("RANDOM()") }
 
-  def equale(user_text)
-    user_text = user_text.mb_chars.downcase.to_s.strip.squeeze(" ")
-    translated_text = self.translated_text.mb_chars.downcase.to_s.strip.squeeze(" ")
+  def check_translation(user_text)
+    return false unless Util.compare_strings(user_text, translated_text)
 
-    if user_text != translated_text
-      return false
-    end
-
-    self.review_date += 3
-    self.save
+    update_attributes review_date: self.review_date += 3
   end
 end

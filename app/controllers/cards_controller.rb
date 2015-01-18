@@ -19,18 +19,14 @@ class CardsController < ApplicationController
     @cards = Card.all
   end
 
-  def random
-    get_random_card
-  end
-
   def check
-    if @card.equale(params[:user_text])
+    if @card.check_translation(params[:user_text])
       flash[:notice] = "Правильно"
     else
       flash[:notice] = "Неправильно"
     end
 
-    redirect_to random_card_path
+    redirect_to root_path
   end
 
   def edit
@@ -53,11 +49,6 @@ class CardsController < ApplicationController
 
   def get_card
     @card = Card.find(params[:id])
-  end
-
-  def get_random_card
-    @cards = Card.review
-    @card = @cards.offset(rand(@cards.count)).first
   end
 
   def card_params

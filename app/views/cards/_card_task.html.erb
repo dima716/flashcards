@@ -4,7 +4,7 @@
   </div>
   <%= form_tag check_card_path, class: "check_card" do %>
     <div class="cards-panel cards-text-translated">
-      <%= hidden_field_tag(:id, @card.id) %>
+      <%= hidden_field_tag :id, @card.id %>
       <%= text_field_tag :user_text, nil, placeholder: "Введите перевод" %>
     </div>
     <div class="cards-panel">
