@@ -2,12 +2,12 @@
   Первый в мире удобный менеджер флеш-карточек. <br> Именно так!
 </h1>
 
-<% if flash[:notice] == "Правильно" %>
-  <div class="alert alert-success alert-large text-center" role="alert"><%= flash[:notice] %></div>
+<% if flash[:success] %>
+  <div class="alert alert-success alert-large text-center" role="alert"><%= flash[:success] %></div>
 <% end %>
 
-<% if flash[:notice] == "Неправильно" %>
-  <div class="alert alert-danger alert-large text-center" role="alert"><%= flash[:notice] %></div>
+<% if flash[:error] %>
+  <div class="alert alert-danger alert-large text-center" role="alert"><%= flash[:error] %></div>
 <% end %>
 
 <div class="cards">

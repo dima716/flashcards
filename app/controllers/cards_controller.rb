@@ -21,9 +21,9 @@ class CardsController < ApplicationController
 
   def check
     if @card.check_translation(params[:user_text])
-      flash[:notice] = "Правильно"
+      flash[:success] = "Правильно"
     else
-      flash[:notice] = "Неправильно"
+      flash[:error] = "Неправильно"
     end
 
     redirect_to root_path
