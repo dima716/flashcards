@@ -7,6 +7,6 @@ class Card < ActiveRecord::Base
   def check_translation(user_text)
     return false unless Util.compare_strings(user_text, translated_text)
 
-    update_attributes review_date: self.review_date += 3
+    update_attributes(review_date: self.review_date += 3)
   end
 end
