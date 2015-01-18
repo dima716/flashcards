@@ -2,12 +2,8 @@
   Первый в мире удобный менеджер флеш-карточек. <br> Именно так!
 </h1>
 
-<% if flash[:success] %>
-  <div class="alert alert-success alert-large text-center" role="alert"><%= flash[:success] %></div>
-<% end %>
-
-<% if flash[:error] %>
-  <div class="alert alert-danger alert-large text-center" role="alert"><%= flash[:error] %></div>
+<% flash.each do |type, message| %>
+  <div class="<%= flash_class(type) %> alert-large text-center"> <%= message %> </div>
 <% end %>
 
 <div class="cards">
