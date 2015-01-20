@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :get_card, only: [:edit, :update, :destroy]
+  before_action :get_card, only: [:edit, :update, :destroy, :check]
 
   def new
     @card = Card.new
@@ -17,6 +17,16 @@ class CardsController < ApplicationController
 
   def index
     @cards = Card.all
+  end
+
+  def check
+    if @card.check_translation(params[:user_text])
+      flash[:success] = "Правильно"
+    else
+      flash[:error] = "Неправильно"
+    end
+
+    redirect_to root_path
   end
 
   def edit
