@@ -8,8 +8,8 @@ describe Card do
 
   context "#check_translation" do
     it "expect return false" do
-       user_input = "Привет"
-       expect(card.check_translation(user_input)).to be == false
+      user_input = "Привет"
+      expect(card.check_translation(user_input)).to be == false
     end
 
     it "expect return true" do
