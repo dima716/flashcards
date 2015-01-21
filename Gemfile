@@ -44,7 +44,7 @@ group :development, :test do
 end
 
 group :test do
-  # RSpec
+  # Testing framework to do TDD in rails
   gem 'rspec-rails'
 end
 
