@@ -43,3 +43,8 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  # Testing framework to do TDD in rails
+  gem 'rspec-rails'
+end
+
