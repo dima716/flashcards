@@ -46,5 +46,8 @@ end
 group :test do
   # Testing framework to do TDD in rails
   gem 'rspec-rails'
+
+  # Integration test framework
+  gem 'capybara'
 end
 
