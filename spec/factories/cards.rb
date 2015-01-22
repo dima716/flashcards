@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :card do
-    original_text "Goodbye"
-    translated_text "Пока"
+    original_text "dog"
+    translated_text "собака"
     review_date Date.today
 
     factory :card_reviewed do

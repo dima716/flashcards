@@ -32,20 +32,17 @@ describe "Main page" do
   context "when checking translation" do
     before :each do
       create(:card)
-      create(:card, original_text: "Hello", translated_text: "Привет")
       visit root_url
     end
 
     it "should show failure message" do
-      fill_in "user_text", with: "Неправильный текст"
+      fill_in "user_text", with: "кот"
       click_button("Проверить")
       expect(page).to have_content "Неправильно"
     end
 
     it "should show success message" do
-      # As card is random, we should find the correct text in database
-      correct_text = Card.find(page.find("#id").value).translated_text
-      fill_in "user_text", with: correct_text
+      fill_in "user_text", with: "собака"
       click_button("Проверить")
       expect(page).to have_content "Правильно"
     end
@@ -54,7 +51,6 @@ describe "Main page" do
   context "when all cards have been reviewed" do
     it "should show notification message" do
       create(:card_reviewed)
-      create(:card_reviewed, original_text: "Hello", translated_text: "Привет")
       visit root_url
       expect(page).to have_content "Все карты повторены!"
     end
