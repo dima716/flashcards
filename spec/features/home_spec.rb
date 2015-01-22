@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "navigation is availabe", :type => :feature do
+describe "navigation is availabe", type: :feature do
 
   before :each do
     create(:card)
@@ -29,7 +29,7 @@ describe "navigation is availabe", :type => :feature do
   end
 end
 
-describe "checking translation", :type => :feature do
+describe "checking translation", type: :feature do
   before :each do
     create(:card)
     create(:card, original_text: "Hello", translated_text: "Привет")
@@ -54,7 +54,7 @@ describe "checking translation", :type => :feature do
   end
 end
 
-describe "if all cards have been reviewed" do
+describe "if all cards have been reviewed", type: :feature do
   before :each do
     create(:card_reviewed)
     create(:card_reviewed, original_text: "Hello", translated_text: "Привет")
