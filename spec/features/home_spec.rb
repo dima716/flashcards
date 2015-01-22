@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "navigation is availabe", :type => :feature do
 
   before :each do
-    Card.create(original_text: "Goodbye", translated_text: "Пока", review_date: Date.today)
+    create(:card)
     visit root_url
   end
 
@@ -31,8 +31,8 @@ end
 
 describe "checking translation", :type => :feature do
   before :each do
-    Card.create(original_text: "Hello", translated_text: "Привет", review_date: Date.today)
-    Card.create(original_text: "Goodbye", translated_text: "Пока", review_date: Date.today)
+    create(:card)
+    create(:card, original_text: "Hello", translated_text: "Привет")
     visit root_url
   end
 
@@ -56,8 +56,8 @@ end
 
 describe "if all cards have been reviewed" do
   before :each do
-    Card.create(original_text: "Hello", translated_text: "Привет", review_date: Date.today + 1)
-    Card.create(original_text: "Hello", translated_text: "Привет", review_date: Date.today + 2)
+    create(:card_reviewed)
+    create(:card_reviewed, original_text: "Hello", translated_text: "Привет")
   end
 
   it do
