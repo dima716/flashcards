@@ -1,12 +1,11 @@
-<h1>
-  Первый в мире удобный менеджер флеш-карточек. <br> Именно так!
-</h1>
+<h1>Первый в мире удобный менеджер флеш-карточек. <br> Именно так!</h1>
 
-<% flash.each do |type, message| %>
-  <div class="<%= flash_class(type) %> alert-large text-center"> <%= message %> </div>
+<%= render "shared/flash" %>
+
+<% if @card %>
+  <div class="cards">
+    <%= render "cards/card_task" %>
+  </div>
+<% else %>
+  <h2>Все карты повторены!</h2>
 <% end %>
-
-<div class="cards">
-  <%= render "cards/card_task" %>
-</div>
-
