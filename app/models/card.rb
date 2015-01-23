@@ -1,4 +1,7 @@
 class Card < ActiveRecord::Base
+  belongs_to :user
+
+  validates :user, presence: true
   validates :original_text, :translated_text, presence: { message: "%{value} не может быть пустым" }
   validates_with TextsEqualityValidator
 
