@@ -4,7 +4,7 @@ describe "Main page" do
   context "when checking translation" do
     before :each do
       user = create(:user, email: "john@example.com", password: "test")
-      card = create(:card, original_text: "Test", translated_text: "Тест", user: user)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user)
       visit root_url
     end
 
