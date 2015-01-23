@@ -46,5 +46,11 @@ end
 group :test do
   # Testing framework to do TDD in rails
   gem 'rspec-rails'
+
+  # A library for setting up Ruby objects as test data
+  gem "factory_girl_rails", "~> 4.0"
+
+  # Integration test framework
+  gem 'capybara'
 end
 
