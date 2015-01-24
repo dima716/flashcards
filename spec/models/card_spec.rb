@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe Card do
-  subject(:card) { Card.new(original_text: "Goodbye", translated_text: "Пока", review_date: Date.today) }
-  let(:card_with_phrase) { Card.new(original_text: "Good morning", translated_text: "Доброе утро", review_date: Date.today) }
+  let(:user) { create(:user, email: "john@example.com", password: "test") }
+  subject(:card) { create(:card, original_text: "Goodbye", translated_text: "Пока", review_date: Date.today, user: user) }
+  let(:card_with_phrase) { create(:card, original_text: "Good morning", translated_text: "Доброе утро", review_date: Date.today, user: user) }
 
   it { is_expected.to respond_to(:check_translation).with(1).argument }
   it { is_expected.not_to respond_to(:check_translation).with(0).arguments }

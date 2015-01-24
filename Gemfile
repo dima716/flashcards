@@ -52,5 +52,8 @@ group :test do
 
   # Integration test framework
   gem 'capybara'
+
+  # Strategies for cleaning databases in Ruby
+  gem 'database_cleaner'
 end
 

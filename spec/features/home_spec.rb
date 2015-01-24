@@ -3,7 +3,8 @@ require 'rails_helper'
 describe "Main page" do
   context "when checking translation" do
     before :each do
-      create(:card, original_text: "Test", translated_text: "Тест")
+      user = create(:user, email: "john@example.com", password: "test")
+      create(:card, original_text: "Test", translated_text: "Тест", user: user)
       visit root_url
     end
 
@@ -22,7 +23,8 @@ describe "Main page" do
 
   context "when all cards have been reviewed" do
     it "should show notification message" do
-      create(:card_reviewed, original_text: "Test", translated_text: "Тест")
+      user = create(:user, email: "john@example.com", password: "test")
+      create(:card_reviewed, original_text: "Test", translated_text: "Тест", user: user)
       visit root_url
       expect(page).to have_content "Все карты повторены!"
     end

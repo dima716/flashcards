@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    models:
+      user: пользователь
+      card: карточка
+    attributes:
+      user:
+        password: "Пароль"
+      card:
+        original_text: "Оригинальный текст"
+        translated_text: "Текст перевода"
+        review_date: "Дата повторения"
+        user: "Пользователь"
+    errors:
+      models:
+        card:
+          blank: "не может быть пустой"
+
