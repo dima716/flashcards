@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
   belongs_to :user
 
   validates :user, presence: true
-  validates :original_text, :translated_text, presence: { message: "%{value} не может быть пустым" }
+  validates :original_text, :translated_text, presence: true
   validates_with TextsEqualityValidator
 
   scope :for_review, -> { where("review_date <= ?", Date.today).order("RANDOM()") }
