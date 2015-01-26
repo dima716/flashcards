@@ -16,6 +16,6 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to(:root, :flash => { info: "Произведен выход" } )
+    redirect_to(:root, :flash => { info: "Произведен выход" })
   end
 end
