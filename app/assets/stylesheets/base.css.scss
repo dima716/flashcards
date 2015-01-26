@@ -1,3 +1,7 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap-social";
+
 $error-frame-color: #a94442;
 $alert-large-fs: 20px;
 $link-color: #008AB8;
@@ -21,5 +25,9 @@ a {
 
 .alert-large {
   font-size: $alert-large-fs
+}
+
+.btn {
+  margin-right: 10px;
 }
 

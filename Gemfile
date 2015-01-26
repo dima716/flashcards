@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 # authentication for Rails 3 & 4
 gem 'sorcery'
+# scalable vector icons that can instantly be customized
+gem 'font-awesome-sass', '~> 4.2.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

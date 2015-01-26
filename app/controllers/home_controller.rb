@@ -6,7 +6,7 @@ class HomeController < ApplicationController
       @cards = current_user.cards
 
       if @cards.empty?
-        flash.now[:empty] = "Вы еще не добавили ни одной карточки."
+        flash.now[:empty] = "Вы еще не добавили ни одной карточки"
       elsif !@cards.for_review.first
         flash.now[:reviewed] = "Все карточки повторены"
       else

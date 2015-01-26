@@ -27,7 +27,10 @@
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav navbar-left">
             <% if current_user %>
-              <li><%= link_to "Выйти", logout_path %></li>
+              <% if current_user.profile_image_url %>
+                <li><%= image_tag current_user.profile_image_url, class: "img-circle", size: "48x48" %></li>
+              <% end %>
+                <li><%= link_to "Выйти", logout_path %></li>
             <% else %>
               <li><%= link_to "Войти", login_path %></li>
               <li><%= link_to "Регистрация", new_user_path %></li>

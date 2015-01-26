@@ -9,7 +9,7 @@ class UserSessionsController < ApplicationController
     if @user = login(params[:email], params[:password])
       redirect_back_or_to(:root, success: "Добро пожаловать")
     else
-      flash.now[:error] = "Неверный логин"
+      flash.now[:error] = "Неверный логин или пароль"
       render action: "new"
     end
   end
