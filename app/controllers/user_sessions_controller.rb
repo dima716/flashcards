@@ -6,7 +6,8 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    if @user = login(auth_params[:email], auth_params[:password])
+    @user = login(auth_params[:email], auth_params[:password])
+    if @user
       redirect_back_or_to(:root, success: "Добро пожаловать")
     else
       flash.now[:error] = "Неверный логин или пароль"
