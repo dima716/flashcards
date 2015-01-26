@@ -1,6 +1,6 @@
 $original-text-color: #279B61;
 $translated-text-color: #CC3333;
-$cards-link-color: #008AB8;
+
 
 .cards {
   text-align: center;
@@ -34,11 +34,6 @@ $cards-link-color: #008AB8;
       color: $translated-text-color;
     }
   }
-
-  &-link {
-    color: $cards-link-color
-  }
-
 }
 
 @media (min-width: 1200px) {

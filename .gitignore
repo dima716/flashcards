@@ -17,3 +17,7 @@ config/database.yml
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore keys for external providers in Sorcery
+/config/initializers/sorcery.rb
+

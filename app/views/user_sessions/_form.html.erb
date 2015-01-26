@@ -1,0 +1,15 @@
+<%= render "shared/notification" %>
+
+<%= form_tag user_sessions_path, method: :post do %>
+  <div class="input-group">
+    <%= label_tag :email, "Email", class: "input-group-addon" %>
+    <%= text_field_tag :email, nil, class: "form-control" %>
+  </div>
+  <div class="input-group">
+    <%= label_tag :password, "Пароль", class: "input-group-addon" %>
+    <%= password_field_tag :password, nil, class: "form-control" %>
+  </div>
+  <div class="input-group">
+    <%= submit_tag "Войти", class: "btn btn-md btn-primary" %>
+  </div>
+<% end %>

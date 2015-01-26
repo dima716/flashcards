@@ -6,6 +6,7 @@ ru:
     attributes:
       user:
         password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
       card:
         original_text: "Оригинальный текст"
         translated_text: "Текст перевода"
@@ -15,4 +16,14 @@ ru:
       models:
         card:
           blank: "не может быть пустой"
+        user:
+          blank: "не может быть пустым"
+          attributes:
+            password:
+              too_short: "должен быть минимум 3 символа"
+            email:
+              taken: "уже существует"
+            password_confirmation:
+              confirmation: "и введенный пароль не совпадают"
+
 

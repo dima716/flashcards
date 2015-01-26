@@ -6,7 +6,7 @@
     <%= link_to "Редактировать", edit_card_path(card), class: "cards-link" %>
   </div>
   <div class="cards-panel">
-    <%= link_to "Удалить", card_path(card), class: "cards-link",
+    <%= link_to "Удалить", card_path(card),
     method: :delete,
     data: { confirm: "Подвердить удаление ?" } %>
   </div>
