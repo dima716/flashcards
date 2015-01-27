@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'sorcery'
 # scalable vector icons that can instantly be customized
 gem 'font-awesome-sass', '~> 4.2.0'
+# setting environment variables in the Unix shell
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
