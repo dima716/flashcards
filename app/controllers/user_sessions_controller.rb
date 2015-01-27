@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-  skip_before_filter :require_login, except: [:destroy]
+  skip_before_action :require_login, except: [:destroy]
 
   def new
     @user = User.new
@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to(:root, success: "Добро пожаловать")
     else
       flash.now[:error] = "Неверный логин или пароль"
-      render action: "new"
+      render "new"
     end
   end
 

@@ -33,11 +33,11 @@ describe "Main page" do
   end
 
   context "when there are no cards in database" do
-    it "should show notification message" do
+    it "should show add card form" do
       user = create(:user, email: "john@example.com", password: "test", password_confirmation: "test")
       login_user_post(user.email, "test")
       visit root_url
-      expect(page).to have_content "Вы еще не добавили ни одной карточки"
+      expect(page).to have_content "Создание карточки"
     end
   end
 end

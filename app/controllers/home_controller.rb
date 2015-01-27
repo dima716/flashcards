@@ -1,17 +1,19 @@
 class HomeController < ApplicationController
-  skip_before_filter :require_login
+  skip_before_action :require_login
 
   def index
     if current_user
       @cards = current_user.cards
 
       if @cards.empty?
-        flash.now[:empty] = "Вы еще не добавили ни одной карточки"
-      elsif !@cards.for_review.first
-        flash.now[:reviewed] = "Все карточки повторены"
+        flash[:empty] = "Для начала упражнений необходимо добавить карточки"
+        redirect_to new_card_path
+      elsif @card = @cards.for_review.first
       else
-        @card = @cards.for_review.first
+        flash.now[:reviewed] = "Все карточки повторены"
       end
+    else
+      render "promo"
     end
   end
 end
