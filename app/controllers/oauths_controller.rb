@@ -8,19 +8,18 @@ class OauthsController < ApplicationController
   def callback
     provider = auth_params[:provider]
 
-    begin
-      if @user = login_from(provider)
-        redirect_to root_path, flash: { success: "Успешный вход с #{provider.titleize}" }
-      else
-        @user = create_from(provider)
+    if @user = login_from(provider)
+      redirect_to root_path, flash: { success: "Успешный вход с #{provider.titleize}" }
+    else
+      @user = create_from(provider)
 
-        reset_session
-        auto_login(@user)
-        redirect_to root_path, flash: { success: "Успешный вход с #{provider.titleize}" }
-      end
-    rescue
-      redirect_to root_path, flash: { error: "Неудалось войти с #{provider.titleize}" }
+      reset_session
+      auto_login(@user)
+      redirect_to root_path, flash: { success: "Успешный вход с #{provider.titleize}" }
     end
+
+  rescue
+    redirect_to root_path, flash: { error: "Неудалось войти с #{provider.titleize}" }
   end
 
   private
