@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   def index
     if current_user
       @cards = current_user.cards
-
       if @cards.empty?
         flash[:empty] = "Для начала упражнений необходимо добавить карточки"
         redirect_to new_card_path
@@ -12,8 +11,6 @@ class HomeController < ApplicationController
       else
         flash.now[:reviewed] = "Все карточки повторены"
       end
-    else
-      render "promo"
     end
   end
 end
