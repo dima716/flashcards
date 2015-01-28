@@ -48,9 +48,9 @@ class CardsController < ApplicationController
   private
 
   def get_card
-    @card = current_user.cards.find(params[:id])
-    rescue
-      redirect_to root_path
+    unless @card = current_user.cards.where(id: params[:id]).first
+     redirect_to root_path
+    end
   end
 
   def card_params
