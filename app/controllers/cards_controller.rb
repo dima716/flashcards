@@ -2,11 +2,11 @@ class CardsController < ApplicationController
   before_action :get_card, only: [:edit, :update, :destroy, :check]
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.new(card_params)
 
     if @card.save
       redirect_to cards_path
@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.all
+    @cards = current_user.cards
   end
 
   def check
@@ -48,7 +48,9 @@ class CardsController < ApplicationController
   private
 
   def get_card
-    @card = Card.find(params[:id])
+    unless @card = current_user.cards.where(id: params[:id]).first
+      redirect_to root_path
+    end
   end
 
   def card_params

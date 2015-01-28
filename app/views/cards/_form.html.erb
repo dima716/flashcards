@@ -6,21 +6,21 @@
   <% end %>
 
   <div class="input-group">
-    <%= f.label :original_text, "Оригинальный текст", class: "input-group-addon" %>
+    <%= f.label :original_text, class: "input-group-addon" %>
     <%= f.text_field :original_text, class: "form-control" %>
   </div>
 
   <div class="input-group">
-    <%= f.label :translated_text, "Текст перевода", class: "input-group-addon" %>
+    <%= f.label :translated_text, class: "input-group-addon" %>
     <%= f.text_field :translated_text, class: "form-control" %>
   </div>
 
   <div class="input-group">
-    <%= f.label :review_date, "Дата повторения", class: "input-group-addon" %>
+    <%= f.label :review_date, class: "input-group-addon" %>
     <%= f.date_field :review_date, class: "form-control", value: "#{Date.today}" %>
   </div>
 
   <div class="input-group">
-    <%= f.submit submit_text, class: "btn btn-default" %>
+    <%= f.submit submit_text, class: "btn btn-md btn-primary" %>
   </div>
 <% end %>

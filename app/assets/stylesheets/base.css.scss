@@ -1,9 +1,18 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootstrap-social";
+
 $error-frame-color: #a94442;
 $alert-large-fs: 20px;
+$link-color: #008AB8;
 
 h2 {
   margin-bottom: 20px;
   text-align: center;
+}
+
+a {
+  color: $link-color
 }
 
 .input-group {
@@ -17,3 +26,8 @@ h2 {
 .alert-large {
   font-size: $alert-large-fs
 }
+
+.btn {
+  margin-right: 10px;
+}
+

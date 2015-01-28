@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Card do
-  let(:user) { create(:user, email: "john@example.com", password: "test") }
+  let(:user) { create(:user, email: "john@example.com", password: "test", password_confirmation: "test") }
   subject(:card) { create(:card, original_text: "Goodbye", translated_text: "Пока", review_date: Date.today, user: user) }
   let(:card_with_phrase) { create(:card, original_text: "Good morning", translated_text: "Доброе утро", review_date: Date.today, user: user) }
 
