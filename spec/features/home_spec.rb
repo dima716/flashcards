@@ -40,4 +40,16 @@ describe "Main page" do
       expect(page).to have_content "Создание карточки"
     end
   end
+
+  context "when user trying to edit another user's card" do
+    it "should redirect to main page" do
+      user_one = create(:user, email: "john@example.com", password: "john", password_confirmation: "john")
+      user_two = create(:user, email: "mike@example.com", password: "mike", password_confirmation: "mike")
+      create(:card, original_text: "Test", translated_text: "Тест", user: user_one)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user_two)
+      login_user_post(user_one.email, "john")
+      visit edit_card_path(user_two.cards.first)
+      expect(current_path).to eq(root_path)
+    end
+  end
 end
