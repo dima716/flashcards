@@ -49,7 +49,7 @@ class CardsController < ApplicationController
 
   def get_card
     unless @card = current_user.cards.where(id: params[:id]).first
-     redirect_to root_path
+      redirect_to root_path
     end
   end
 
