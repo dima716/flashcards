@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-
 require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
@@ -22,18 +21,28 @@ module Flashcards
 
 # Do not swallow errors in after_commit/after_rollback callbacks.
 
-  ActionView::Base.field_error_proc = Proc.new do |html_tag|
-    class_attr_index = html_tag.index 'class="'
+    ActionView::Base.field_error_proc = Proc.new do |html_tag|
+      class_attr_index = html_tag.index 'class="'
 
-    if class_attr_index
-      html_tag.insert class_attr_index + 7, 'error '
-    else
-      html_tag.insert html_tag.index('>'), ' class="error"'
+      if class_attr_index
+        html_tag.insert class_attr_index + 7, 'error '
+      else
+        html_tag.insert html_tag.index('>'), ' class="error"'
+      end
     end
-  end
 
-  config.active_record.raise_in_transactional_callbacks = true
-  config.autoload_paths += %W(#{config.root}/lib)
-
+    config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths += %W(#{config.root}/lib)
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_host_name: "s3.eu-central-1.amazonaws.com",
+      s3_credentials: {
+        bucket: ENV["S3_BUCKET_NAME"],
+        access_key_id: ENV["AWS_ACCESS_KEY_ID"],
+        secret_access_key: ENV["AWS_SECRET_ACCESS_KEY"]
+      },
+      url: ":s3_path_url",
+      path: "/:class/:attachment/:id_partition/:style/:filename"
+    }
   end
 end
