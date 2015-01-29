@@ -20,16 +20,18 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
+# Bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-# authentication for Rails 3 & 4
+# Authentication for Rails 3 & 4
 gem 'sorcery'
-# scalable vector icons that can instantly be customized
+# Scalable vector icons that can instantly be customized
 gem 'font-awesome-sass', '~> 4.2.0'
-# setting environment variables in the Unix shell
+# Setting environment variables in the Unix shell
 gem 'figaro'
-# file attachment management for ActiveRecord
+# File attachment management for ActiveRecord
 gem "paperclip", "~> 4.2"
+# Using Amazon's S3 file hosting service
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
