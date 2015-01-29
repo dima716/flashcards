@@ -28,6 +28,8 @@ gem 'sorcery'
 gem 'font-awesome-sass', '~> 4.2.0'
 # setting environment variables in the Unix shell
 gem 'figaro'
+# file attachment management for ActiveRecord
+gem "paperclip", "~> 4.2"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

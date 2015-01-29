@@ -1,6 +1,10 @@
 class Card < ActiveRecord::Base
   belongs_to :user
 
+  has_attached_file :picture, styles: { medium: "360x360#" }
+  validates_attachment_content_type :picture, content_type: /\Aimage/
+  validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
+
   validates :user, presence: true
   validates :original_text, :translated_text, presence: true
   validates_with TextsEqualityValidator

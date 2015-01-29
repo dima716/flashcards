@@ -1,4 +1,7 @@
 <li class="cards-item">
+  <div class="cards-panel cards-picture">
+    <%= image_tag card.picture.url(:medium) %>
+  </div>
   <div class="cards-panel cards-text-original"><%= card.original_text %></div>
   <div class="cards-panel cards-text-translated"><%= card.translated_text %></div>
   <div class="cards-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
