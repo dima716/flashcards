@@ -5,4 +5,10 @@ ul {
 
 select {
   -webkit-appearance: none;
+  -moz-appearance:    none;
+  appearance:         none;
+
+  /* hack for mozilla to hide select's arrow */
+  text-indent: 0.01px;
+  text-overflow: '';
 }

@@ -1,5 +1,5 @@
 class Deck < ActiveRecord::Base
-  has_many :cards
+  has_many :cards, dependent: :destroy
   belongs_to :user
 
   has_attached_file :picture, styles: { medium: "200x200#" }
@@ -7,7 +7,6 @@ class Deck < ActiveRecord::Base
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
 
   validates :user, :name, presence: true
-  #validates :user, presence: true
 
   scope :current_deck, -> { where("current = ?", true) }
 

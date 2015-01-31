@@ -63,5 +63,4 @@ class DecksController < ApplicationController
       end
     end
   end
-
 end
