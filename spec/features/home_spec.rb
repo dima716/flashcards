@@ -57,7 +57,7 @@ describe "Main page" do
     end
   end
 
-    context "when there is a current deck" do
+  context "when there is a current deck" do
     it "should show card from the current deck" do
       user = create(:user, email: "john@example.com", password: "john", password_confirmation: "john")
       current_deck = create(:deck, name: "Currentdeck", current: true, user: user)
