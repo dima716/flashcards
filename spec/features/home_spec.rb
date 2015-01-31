@@ -4,7 +4,8 @@ describe "Main page" do
   context "when checking translation" do
     before :each do
       user = create(:user, email: "john@example.com", password: "test", password_confirmation: "test")
-      create(:card, original_text: "Test", translated_text: "Тест", user: user)
+      deck = create(:deck, name: "Testdeck", current: false, user: user)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
       login_user_post(user.email, "test")
       visit root_path
     end
@@ -25,7 +26,8 @@ describe "Main page" do
   context "when all cards have been reviewed" do
     it "should show notification message" do
       user = create(:user, email: "john@example.com", password: "test", password_confirmation: "test")
-      create(:card_reviewed, original_text: "Test", translated_text: "Тест", user: user)
+      deck = create(:deck, name: "Testdeck", current: false, user: user)
+      create(:card_reviewed, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
       login_user_post(user.email, "test")
       visit root_url
       expect(page).to have_content "Все карточки повторены"
@@ -45,8 +47,10 @@ describe "Main page" do
     it "should redirect to main page" do
       user_one = create(:user, email: "john@example.com", password: "john", password_confirmation: "john")
       user_two = create(:user, email: "mike@example.com", password: "mike", password_confirmation: "mike")
-      create(:card, original_text: "Test", translated_text: "Тест", user: user_one)
-      create(:card, original_text: "Test", translated_text: "Тест", user: user_two)
+      deck_one = create(:deck, name: "Johndeck", current: false, user: user_one)
+      deck_two = create(:deck, name: "Mikedeck", current: false, user: user_two)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user_one, deck: deck_one)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user_two, deck: deck_two)
       login_user_post(user_one.email, "john")
       visit edit_card_path(user_two.cards.first)
       expect(current_path).to eq(root_path)
