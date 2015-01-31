@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_path, flash: { error: "Пожалуйста, войдите для просмотра страницы" }
   end
+
+  def parse_boolean(value)
+    ActiveRecord::Type::Boolean.new.type_cast_from_database(value)
+  end
 end

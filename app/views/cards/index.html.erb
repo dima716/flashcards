@@ -2,4 +2,7 @@
 
 <ul class="cards">
   <%= render @cards %>
+  <li class="item item-new cards-new">
+    <%= link_to "Добавить <br> карточку".html_safe, new_card_path, class: "btn btn-sm btn-primary" %>
+  </li>
 </ul>

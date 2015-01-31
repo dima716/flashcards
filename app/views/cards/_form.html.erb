@@ -21,6 +21,11 @@
   </div>
 
   <div class="input-group">
+    <%= label_tag :deck_name, "Колода", class: "input-group-addon" %>
+    <%= f.collection_select :deck_id, current_user.decks, :id, :name, {}, { class: "form-control form-control-select" } %>
+  </div>
+
+  <div class="input-group">
     <span class="btn btn-file input-group-addon">
       Выбрать файл <%= f.file_field :picture %>
     </span>

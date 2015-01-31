@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @cards = current_user.cards
+    current_deck = current_user.decks.current_deck.first
+    @cards = current_deck ? current_deck.cards : current_user.cards
 
     if @cards.empty?
       flash[:empty] = "Для начала упражнений необходимо добавить карточки"
