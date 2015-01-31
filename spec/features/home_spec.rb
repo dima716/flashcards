@@ -56,4 +56,17 @@ describe "Main page" do
       expect(current_path).to eq(root_path)
     end
   end
+
+    context "when there is a current deck" do
+    it "should show card from the current deck" do
+      user = create(:user, email: "john@example.com", password: "john", password_confirmation: "john")
+      current_deck = create(:deck, name: "Currentdeck", current: true, user: user)
+      deck = create(:deck, name: "Deck", current: false, user: user)
+      create(:card, original_text: "Test current", translated_text: "Тест текущий", user: user, deck: current_deck)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
+      login_user_post(user.email, "john")
+      visit root_url
+      expect(page).to have_content("Test current")
+    end
+  end
 end

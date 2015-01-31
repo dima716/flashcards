@@ -6,7 +6,8 @@ class Deck < ActiveRecord::Base
   validates_attachment_content_type :picture, content_type: /\Aimage/
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
 
-  validates :user, presence: true
+  validates :user, :name, presence: true
+  #validates :user, presence: true
 
   scope :current_deck, -> { where("current = ?", true) }
 

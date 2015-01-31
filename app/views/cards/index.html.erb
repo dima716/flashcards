@@ -1,4 +1,8 @@
-<h2>Все карточки</h2>
+<% if @deck %>
+  <h2><%= @deck.name %></h2>
+<% else %>
+  <h2>Все карточки</h2>
+<% end %>
 
 <ul class="cards">
   <%= render @cards %>

@@ -7,7 +7,7 @@
       <%= image_tag deck.picture.url(:medium) %>
     </div>
   <% end %>
-  <div class="item-panel"><%= deck.name %></div>
+  <div class="item-panel"><%= link_to deck.name, deck_path(deck.id), class: "btn btn-primary" %></div>
   <div class="item-panel">
     <%= link_to "Редактировать", edit_deck_path(deck) %>
   </div>

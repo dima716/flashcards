@@ -1,11 +1,16 @@
 class DecksController < ApplicationController
-  before_action :get_deck, only: [:edit, :update, :destroy, :check]
+  before_action :get_deck, only: [:show, :edit, :update, :destroy, :check]
 
   def index
     @decks = current_user.decks
   end
 
   def edit
+  end
+
+  def show
+    @cards = @deck.cards
+    render "cards/index"
   end
 
   def new
