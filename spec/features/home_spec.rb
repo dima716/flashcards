@@ -64,7 +64,7 @@ describe "Main page" do
       deck_two = create(:deck, name: "Deck", user: user)
       create(:card, original_text: "Test current", translated_text: "Тест текущий", user: user, deck: deck_one)
       create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck_two)
-      user.current_deck = deck_one
+      user.update_attribute(:current_deck_id, deck_one.id)
       login_user_post(user.email, "john")
       visit root_url
       expect(page).to have_content("Test current")
