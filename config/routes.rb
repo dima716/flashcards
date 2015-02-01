@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :users, only: [:new, :create]
+
   resources :user_sessions, only: [:new, :create, :destroy]
   get "login", to: "user_sessions#new", as: "login"
   get "logout", to: "user_sessions#destroy", as: "logout"
@@ -10,10 +11,9 @@ Rails.application.routes.draw do
     resources :cards
   end
 
-  post "check", to: "cards#check", as: "check_card"
-
-
   get "decks/:id/current", to: "decks#set_current_deck", as: "set_current_deck"
+
+  post "check", to: "cards#check", as: "check_card"
 
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
