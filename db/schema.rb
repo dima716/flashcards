@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150130112921) do
+ActiveRecord::Schema.define(version: 20150131222530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20150130112921) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "user_id"
-    t.boolean  "current"
   end
 
   add_index "decks", ["user_id"], name: "index_decks_on_user_id", using: :btree
@@ -61,6 +60,9 @@ ActiveRecord::Schema.define(version: 20150130112921) do
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "profile_image_url"
+    t.integer  "current_deck_id"
   end
+
+  add_index "users", ["current_deck_id"], name: "index_users_on_current_deck_id", using: :btree
 
 end

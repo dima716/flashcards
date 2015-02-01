@@ -9,10 +9,10 @@
   <div class="item-panel cards-text-translated"><%= card.translated_text %></div>
   <div class="item-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
   <div class="item-panel">
-    <%= link_to "Редактировать", edit_card_path(card), class: "cards-link" %>
+    <%= link_to "Редактировать", edit_deck_card_path(@deck, card), class: "cards-link" %>
   </div>
   <div class="item-panel">
-    <%= link_to "Удалить", card_path(card),
+    <%= link_to "Удалить", deck_card_path(@deck, card),
     method: :delete,
     data: { confirm: "Подтвердить удаление ?" } %>
   </div>

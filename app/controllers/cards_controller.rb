@@ -1,22 +1,24 @@
 class CardsController < ApplicationController
-  before_action :get_card, only: [:edit, :update, :destroy, :check]
+  before_action :get_deck, except: [:check]
+  before_action :get_card, only: [:check, :edit, :update, :destroy]
 
   def new
-    @card = current_user.cards.new
+    @card = @deck.cards.new
+    @card.user = current_user
   end
 
   def create
-    @card = current_user.cards.new(card_params)
+    @card = @deck.cards.new(card_params)
+    @card.user = current_user
 
     if @card.save
-      redirect_to cards_path
+      redirect_to deck_cards_path
     else
       render "new"
     end
   end
 
   def index
-    @cards = current_user.cards
   end
 
   def check
@@ -34,7 +36,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to deck_cards_path
     else
       render "edit"
     end
@@ -42,13 +44,19 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to cards_path
+    redirect_to deck_cards_path
   end
 
   private
 
   def get_card
     unless @card = current_user.cards.where(id: params[:id]).first
+      redirect_to root_path
+    end
+  end
+
+  def get_deck
+    unless  @deck = current_user.decks.where(id: params[:deck_id]).first
       redirect_to root_path
     end
   end

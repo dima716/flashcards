@@ -1,16 +1,21 @@
 class DecksController < ApplicationController
-  before_action :get_deck, only: [:show, :edit, :update, :destroy, :check]
+  before_action :get_deck, only: [:show, :edit, :update, :destroy, :check, :set_current_deck]
 
   def index
     @decks = current_user.decks
   end
 
-  def edit
+  def set_current_deck
+    if @deck.cards.present?
+      current_user.update_attribute(:current_deck_id, @deck.id)
+    else
+      flash[:error] = "Нельзя сделать колоду текущей, если в ней нет карточек"
+    end
+
+    redirect_to decks_path
   end
 
-  def show
-    @cards = @deck.cards
-    render "cards/index"
+  def edit
   end
 
   def new
@@ -20,8 +25,6 @@ class DecksController < ApplicationController
   def create
     @deck = current_user.decks.new(deck_params)
 
-    set_current_deck
-
     if @deck.save
       redirect_to decks_path
     else
@@ -30,8 +33,6 @@ class DecksController < ApplicationController
   end
 
   def update
-    set_current_deck
-
     if @deck.update(deck_params)
       redirect_to decks_path
     else
@@ -53,14 +54,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:name, :picture, :current)
-  end
-
-  def set_current_deck
-    if parse_boolean(deck_params[:current]) && parse_boolean(deck_params[:current]) != parse_boolean(@deck.current_was)
-      if current_user.decks.current_deck.present?
-        @deck.change_current_deck(current_user.decks.current_deck.first)
-      end
-    end
+    params.require(:deck).permit(:name, :picture)
   end
 end

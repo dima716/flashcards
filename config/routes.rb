@@ -6,10 +6,14 @@ Rails.application.routes.draw do
   get "login", to: "user_sessions#new", as: "login"
   get "logout", to: "user_sessions#destroy", as: "logout"
 
-  resources :cards
+  resources :decks do
+    resources :cards
+  end
+
   post "check", to: "cards#check", as: "check_card"
 
-  resources :decks
+
+  get "decks/:id/current", to: "decks#set_current_deck", as: "set_current_deck"
 
   post "oauth/callback" => "oauths#callback"
   get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
