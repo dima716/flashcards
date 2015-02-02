@@ -1,5 +1,5 @@
 <h2>Редактирование колоды</h2>
 
-<%= render partial: "form", locals: { submit_text: "Сохранить" } %>
+<%= render "form", submit_text: "Сохранить", deck: @deck %>
 
 <%= link_to "Назад", decks_path %>

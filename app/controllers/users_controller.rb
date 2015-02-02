@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def set_current
+  def set_current_deck
     @deck = current_user.decks.where(id: params[:id]).first
 
     if @deck.cards.present?

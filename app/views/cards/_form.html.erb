@@ -1,6 +1,6 @@
-<%= form_for [@deck, @card] do |f| %>
-  <% if @card.errors.any? %>
-    <% @card.errors.full_messages.each do |msg| %>
+<%= form_for [deck, card] do |f| %>
+  <% if card.errors.any? %>
+    <% card.errors.full_messages.each do |msg| %>
       <div class="alert alert-danger" role="alert"><%= msg %></div>
     <% end %>
   <% end %>
