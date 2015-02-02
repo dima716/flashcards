@@ -7,11 +7,4 @@ class Deck < ActiveRecord::Base
   validates_attachment_file_name :picture, matches: [/png\Z/, /jpe?g\Z/]
 
   validates :user, :name, presence: true
-
-  scope :current_deck, -> { where("current = ?", true) }
-
-  def change_current_deck(current_deck)
-    current_deck.update_attributes(current: false)
-    update_attributes(current: true)
-  end
 end

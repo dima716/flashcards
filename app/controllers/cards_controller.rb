@@ -56,7 +56,7 @@ class CardsController < ApplicationController
   end
 
   def get_deck
-    unless  @deck = current_user.decks.where(id: params[:deck_id]).first
+    unless @deck = current_user.decks.where(id: params[:deck_id]).first
       redirect_to root_path
     end
   end

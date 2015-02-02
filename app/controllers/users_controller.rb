@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_current
+    @deck = current_user.decks.where(id: params[:id]).first
+
+    if @deck.cards.present?
+      current_user.update_attribute(:current_deck_id, @deck.id)
+    else
+      flash[:error] = "Нельзя сделать колоду текущей, если в ней нет карточек"
+    end
+
+    redirect_to decks_path
+  end
+
   private
 
   def set_user

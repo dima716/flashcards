@@ -5,16 +5,6 @@ class DecksController < ApplicationController
     @decks = current_user.decks
   end
 
-  def set_current_deck
-    if @deck.cards.present?
-      current_user.update_attribute(:current_deck_id, @deck.id)
-    else
-      flash[:error] = "Нельзя сделать колоду текущей, если в ней нет карточек"
-    end
-
-    redirect_to decks_path
-  end
-
   def edit
   end
 
