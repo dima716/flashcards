@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :users, only: [:new, :create]
-  get "decks/:id/current", to: "users#set_current_deck", as: "set_current"
+  put "decks/:id/current", to: "users#set_current_deck", as: "set_current"
 
   resources :user_sessions, only: [:new, :create, :destroy]
   get "login", to: "user_sessions#new", as: "login"
