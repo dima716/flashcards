@@ -1,6 +1,6 @@
-<%= form_for @card do |f| %>
-  <% if @card.errors.any? %>
-    <% @card.errors.full_messages.each do |msg| %>
+<%= form_for [deck, card] do |f| %>
+  <% if card.errors.any? %>
+    <% card.errors.full_messages.each do |msg| %>
       <div class="alert alert-danger" role="alert"><%= msg %></div>
     <% end %>
   <% end %>
@@ -9,24 +9,20 @@
     <%= f.label :original_text, class: "input-group-addon" %>
     <%= f.text_field :original_text, class: "form-control" %>
   </div>
-
   <div class="input-group">
     <%= f.label :translated_text, class: "input-group-addon" %>
     <%= f.text_field :translated_text, class: "form-control" %>
   </div>
-
   <div class="input-group">
     <%= f.label :review_date, class: "input-group-addon" %>
     <%= f.date_field :review_date, class: "form-control", value: "#{Date.today}" %>
   </div>
-
   <div class="input-group">
     <span class="btn btn-file input-group-addon">
-      Выбрать файл <%= f.file_field :picture %>
+      Выбрать картинку <%= f.file_field :picture %>
     </span>
     <%= text_field_tag :picture_text, nil, class: "form-control", readonly: true %>
   </div>
-
   <div class="input-group">
     <%= f.submit submit_text, class: "btn btn-md btn-primary" %>
   </div>

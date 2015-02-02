@@ -1,0 +1,15 @@
+$deck-name-color: #ffcc33;
+
+.decks {
+  font-size: 0;
+
+  &-name {
+    font-size: 18px;
+  }
+
+  &-new {
+    width: 121px;
+    height: 124px;
+    line-height: 124px;
+  }
+}

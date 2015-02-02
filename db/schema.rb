@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150129102237) do
+ActiveRecord::Schema.define(version: 20150131222530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,9 +35,22 @@ ActiveRecord::Schema.define(version: 20150129102237) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.integer  "deck_id"
   end
 
+  add_index "cards", ["deck_id"], name: "index_cards_on_deck_id", using: :btree
   add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
+
+  create_table "decks", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "decks", ["user_id"], name: "index_decks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -47,6 +60,9 @@ ActiveRecord::Schema.define(version: 20150129102237) do
     t.string   "crypted_password"
     t.string   "salt"
     t.string   "profile_image_url"
+    t.integer  "current_deck_id"
   end
+
+  add_index "users", ["current_deck_id"], name: "index_users_on_current_deck_id", using: :btree
 
 end

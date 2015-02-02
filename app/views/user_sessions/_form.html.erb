@@ -8,8 +8,8 @@
     <%= password_field_tag :password, nil, class: "form-control" %>
   </div>
   <div class="input-group">
-    <%= submit_tag "Войти", class: "btn btn-md btn-primary" %>
-    <%= link_to auth_at_provider_path(provider: :twitter), class: "btn btn-social btn-twitter"  do %>
+    <%= submit_tag "Войти", class: "btn btn-md btn-primary btn-inline" %>
+    <%= link_to auth_at_provider_path(provider: :twitter), class: "btn btn-social btn-twitter btn-inline" do %>
        <i class="fa fa-twitter"></i> Войти с Twitter
     <% end %>
   </div>

@@ -1,0 +1,21 @@
+<%= form_for deck do |f| %>
+  <% if @deck.errors.any? %>
+    <% @deck.errors.full_messages.each do |msg| %>
+      <div class="alert alert-danger" role="alert"><%= msg %></div>
+    <% end %>
+  <% end %>
+
+  <div class="input-group">
+    <%= f.label :name, class: "input-group-addon" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <div class="input-group">
+    <span class="btn btn-file input-group-addon">
+      Выбрать картинку <%= f.file_field :picture %>
+    </span>
+    <%= text_field_tag :picture_text, nil, class: "form-control", readonly: true %>
+  </div>
+  <div class="input-group">
+    <%= f.submit submit_text, class: "btn btn-md btn-primary" %>
+  </div>
+<% end %>

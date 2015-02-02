@@ -1,5 +1,8 @@
-<h2>Все карточки</h2>
+<h2><%= @deck.name %></h2>
 
 <ul class="cards">
-  <%= render @cards %>
+  <%= render @deck.cards %>
+  <li class="item item-new cards-new">
+    <%= link_to "Добавить <br> карточку".html_safe, new_deck_card_path(@deck), class: "btn btn-sm btn-primary" %>
+  </li>
 </ul>

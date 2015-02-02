@@ -1,17 +1,18 @@
-<li class="cards-item">
+<li class="item">
+  <div class="label label-info label-lg item-label"><%= card.deck.name %></div>
   <% if card.picture_file_name %>
-    <div class="cards-panel cards-picture">
+    <div class="item-panel item-picture">
       <%= image_tag card.picture.url(:medium) %>
     </div>
   <% end %>
-  <div class="cards-panel cards-text-original"><%= card.original_text %></div>
-  <div class="cards-panel cards-text-translated"><%= card.translated_text %></div>
-  <div class="cards-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
-  <div class="cards-panel">
-    <%= link_to "Редактировать", edit_card_path(card), class: "cards-link" %>
+  <div class="item-panel cards-text-original"><%= card.original_text %></div>
+  <div class="item-panel cards-text-translated"><%= card.translated_text %></div>
+  <div class="item-panel">Повторить: <%= card.review_date.strftime("%d/%m/%Y") %></div>
+  <div class="item-panel">
+    <%= link_to "Редактировать", edit_deck_card_path(@deck, card), class: "cards-link" %>
   </div>
-  <div class="cards-panel">
-    <%= link_to "Удалить", card_path(card),
+  <div class="item-panel">
+    <%= link_to "Удалить", deck_card_path(@deck, card),
     method: :delete,
     data: { confirm: "Подтвердить удаление ?" } %>
   </div>

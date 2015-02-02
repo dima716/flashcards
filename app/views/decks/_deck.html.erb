@@ -1,0 +1,25 @@
+<li class="item">
+  <% if current_user.current_deck == deck %>
+    <div class="label label-info label-lg item-label">Текущая колода</div>
+  <% end %>
+  <% if deck.picture_file_name %>
+    <div class="item-panel item-picture">
+      <%= image_tag deck.picture.url(:medium) %>
+    </div>
+  <% end %>
+  <div class="item-panel">
+    <%= link_to deck.name, deck_cards_path(deck), class: "btn btn-primary" %>
+  </div>
+  <div class="item-panel">
+    <%= link_to "Сделать текущей", set_current_path(deck), method: :put %>
+  </div>
+  <div class="item-panel">
+    <%= link_to "Редактировать", edit_deck_path(deck) %>
+  </div>
+  <div class="item-panel">
+    <%= link_to "Удалить", deck_path(deck),
+    method: :delete,
+    data: { confirm: "Подтвердить удаление ?" } %>
+  </div>
+</li>
+

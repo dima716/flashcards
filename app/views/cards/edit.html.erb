@@ -1,5 +1,5 @@
 <h2>Редактирование карточки</h2>
 
-<%= render partial: "form", locals: { submit_text: "Сохранить"} %>
+<%= render "form", submit_text: "Сохранить", deck: @deck, card: @card %>
 
-<%= link_to "Назад", cards_path %>
+<%= link_to "Назад", deck_cards_path(@deck) %>

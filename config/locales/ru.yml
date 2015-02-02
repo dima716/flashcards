@@ -2,11 +2,15 @@ ru:
   activerecord:
     models:
       user: пользователь
+      deck: колода
       card: карточка
     attributes:
       user:
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
+      deck:
+        name: Название колоды
+        current: Текущая колода
       card:
         original_text: "Оригинальный текст"
         translated_text: "Текст перевода"
@@ -14,8 +18,6 @@ ru:
         user: "Пользователь"
     errors:
       models:
-        card:
-          blank: "не может быть пустой"
         user:
           blank: "не может быть пустым"
           attributes:
@@ -25,5 +27,7 @@ ru:
               taken: "уже существует"
             password_confirmation:
               confirmation: "и введенный пароль не совпадают"
-
-
+        deck:
+          blank: "не может быть пустым"
+        card:
+          blank: "не может быть пустой"

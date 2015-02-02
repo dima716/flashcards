@@ -2,16 +2,21 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :users, only: [:new, :create]
+  put "decks/:id/current", to: "users#set_current_deck", as: "set_current"
+
   resources :user_sessions, only: [:new, :create, :destroy]
   get "login", to: "user_sessions#new", as: "login"
   get "logout", to: "user_sessions#destroy", as: "logout"
 
-  resources :cards
+  resources :decks, except: [:show] do
+    resources :cards, except: [:show]
+  end
+
   post "check", to: "cards#check", as: "check_card"
 
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback" # for use with Github, Facebook
+  get "oauth/:provider", to: "oauths#oauth", as: "auth_at_provider"
 
 # The priority is based upon order of creation: first created -> highest priority.
 # See how all your routes lay out with "rake routes".

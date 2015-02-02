@@ -4,6 +4,7 @@ FactoryGirl.define do
     translated_text "MyString"
     review_date Date.today
     association :user
+    association :deck
 
     factory :card_reviewed do
       review_date Date.today + 1

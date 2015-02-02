@@ -9,5 +9,8 @@ class User < ActiveRecord::Base
 
   has_many :cards, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :decks, dependent: :destroy
+  belongs_to :current_deck, class_name: "Deck"
+
   accepts_nested_attributes_for :authentications
 end

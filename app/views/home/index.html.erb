@@ -1,7 +1,7 @@
 <% if @current_user %>
   <% if @card %>
-    <div class="cards">
-      <%= render "cards/card_task" %>
+    <div class="cards text-center">
+      <%= render "cards/card_task", card: @card %>
     </div>
   <% end %>
 <% else %>
@@ -9,8 +9,8 @@
     <h1>Менеджер флеш-карточек</h1>
     <p class="lead">Учите слова в любое время по эффективной системе интервальных повторений</p>
     <p class="lead">
-      <%= link_to "Войти", login_path, class: "btn btn-lg btn-primary" %>
-      <%= link_to "Зарегистрироваться",new_user_path, class: "btn btn-lg btn-primary" %>
+      <%= link_to "Войти", login_path, class: "btn btn-lg btn-primary btn-inline" %>
+      <%= link_to "Зарегистрироваться",new_user_path, class: "btn btn-lg btn-primary btn-inline" %>
     </p>
   </div>
 <% end %>
