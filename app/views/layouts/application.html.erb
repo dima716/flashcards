@@ -27,16 +27,25 @@
         <div class="collapse navbar-collapse" id="navbar">
           <% if current_user %>
             <ul class="nav navbar-nav navbar-left">
-              <% if current_user.profile_image_url %>
-                <li><%= image_tag current_user.profile_image_url, class: "img-circle", size: "48x48" %></li>
-              <% end %>
-              <li><%= link_to "Выйти", logout_path %></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Карточки", decks_path %></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <div class="media user">
+                  <% if current_user.profile_image_url %>
+                    <div class="media-left user-avatar">
+                        <%= image_tag current_user.profile_image_url, class: "img-circle user-avatar", size: "48x48" %>
+                    </div>
+                  <% end %>
+                  <div class="media-body media-middle">
+                    <div class="media-heading user-name"><%= current_user.email || current_user.name %></div>
+                    <%= link_to "Выйти", logout_path, class: "user-link" %>
+                  </div>
+                </div>
+              </li>
+            </ul>
           <% else %>
-            <ul class="nav navbar-nav navbar-left">
+            <ul class="nav navbar-nav navbar-right">
               <li><%= link_to "Войти", login_path %></li>
               <li><%= link_to "Регистрация", new_user_path %></li>
             </ul>

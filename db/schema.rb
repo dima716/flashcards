@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150131222530) do
+ActiveRecord::Schema.define(version: 20150203081841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20150131222530) do
     t.string   "salt"
     t.string   "profile_image_url"
     t.integer  "current_deck_id"
+    t.string   "name"
   end
 
   add_index "users", ["current_deck_id"], name: "index_users_on_current_deck_id", using: :btree
