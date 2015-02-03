@@ -6,6 +6,7 @@ $error-frame-color: #a94442;
 $alert-large-fs: 20px;
 $link-color: #008ab8;
 $new-item-bg-color: #d4d4d4;
+$item-border-color: #777;
 
 h2 {
   margin-bottom: 25px;
@@ -74,17 +75,14 @@ a {
   }
 
   &-panel {
-    border-top: 1px solid #000;
+    border-top: 1px solid $item-border-color;
     padding: 10px;
-
-    &:first-child {
-      border-top: none;
-    }
   }
 
   &-picture {
     padding: 0;
     overflow: hidden;
+    border-top: none;
   }
 
   &-label {
