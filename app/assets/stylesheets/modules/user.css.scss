@@ -1,0 +1,47 @@
+$user-link-color: #777;
+$user-link-hover-color: #333;
+
+.user {
+  padding: 5px 0;
+
+  &-avatar {
+    display: none;
+  }
+
+  &-name {
+    display: none;
+  }
+
+  &-link {
+    color: $user-link-color;
+    padding: 10px 0 10px 15px;
+
+    &:hover {
+      text-decoration: none;
+      color: $user-link-hover-color;
+      background-color: transparent;
+    }
+  }
+
+  &-name {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+}
+
+
+@media (min-width: 768px) {
+    .user {
+      &-avatar {
+        display: table-cell;
+      }
+
+      &-link {
+        padding: 0;
+      }
+
+      &-name {
+        display: table-cell;
+      }
+    }
+}

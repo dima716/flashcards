@@ -42,6 +42,9 @@ gem 'aws-sdk'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Enable features such as static asset serving and logging on Heroku
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

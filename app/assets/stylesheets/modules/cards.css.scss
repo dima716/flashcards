@@ -8,6 +8,7 @@ $translated-text-color: #cc3333;
 
     &-original {
       color: $original-text-color;
+      border-top: none;
     }
 
     &-translated {
