@@ -10,9 +10,11 @@
   <div class="item-panel">
     <%= link_to deck.name, deck_cards_path(deck), class: "btn btn-primary" %>
   </div>
-  <div class="item-panel">
-    <%= link_to "Сделать текущей", set_current_path(deck), method: :put %>
-  </div>
+  <% if current_user.current_deck != deck %>
+    <div class="item-panel">
+      <%= link_to "Сделать текущей", set_current_path(deck), method: :put %>
+    </div>
+  <% end %>
   <div class="item-panel">
     <%= link_to "Редактировать", edit_deck_path(deck) %>
   </div>
