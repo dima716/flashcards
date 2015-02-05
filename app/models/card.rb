@@ -11,7 +11,7 @@ class Card < ActiveRecord::Base
   validates :user, :original_text, :translated_text, presence: true
   validates_with TextsEqualityValidator
 
-  scope :for_review, -> { where("review_date <= ? AND retired = ?", Time.current, false).order("RANDOM()") }
+  scope :for_review, -> { where("review_date <= ?", Time.current).order("RANDOM()") }
 
   def check_translation(user_text)
     Util.compare_strings(user_text, translated_text)
@@ -19,6 +19,16 @@ class Card < ActiveRecord::Base
 
   def set_review_date
     self.review_date = Time.current
+  end
+
+  def review(user_text)
+    if check_translation(user_text)
+      update_successful_checks_counter
+      update_review_date
+    else
+      update_unsuccessful_checks_counter unless successful_checks_counter == 0
+      return false
+    end
   end
 
   def update_review_date
@@ -31,10 +41,10 @@ class Card < ActiveRecord::Base
       update_attribute(:review_date, Time.current + 1.week)
     when 4
       update_attribute(:review_date, Time.current + 2.weeks)
-    when 5
-      update_attribute(:review_date, Time.current + 1.month)
-    when 6
-      update_attribute(:retired, true)
+    else
+      if successful_checks_counter >= 5
+        update_attribute(:review_date, Time.current + 1.month)
+      end
     end
   end
 

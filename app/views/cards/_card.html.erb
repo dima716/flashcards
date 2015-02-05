@@ -5,9 +5,6 @@
       <%= image_tag card.picture.url(:medium) %>
     </div>
   <% end %>
-  <% if card.retired %>
-    <div class="label label-success label-lg item-label item-label-status">Усвоена</div>
-  <% end %>
   <div class="item-panel cards-text-original"><%= card.original_text %></div>
   <div class="item-panel cards-text-translated"><%= card.translated_text %></div>
   <div class="item-panel">
