@@ -1,5 +1,5 @@
 class AlterColumnCardsReviewDate < ActiveRecord::Migration
- def self.up
+  def self.up
     change_table :cards do |t|
       t.change :review_date, :datetime
     end
