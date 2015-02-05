@@ -49,7 +49,7 @@ describe Card do
   context "#update_review_date" do
     it "should update card review date" do
       old_review_date = card.review_date
-      card.update_attribute(:successful_checks_counter, card.successful_checks_counter + 1)
+      card.update_successful_checks_counter
       card.update_review_date
       expect(card.review_date).to be > old_review_date
     end

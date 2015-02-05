@@ -23,20 +23,11 @@ class CardsController < ApplicationController
 
   def check
     if @card.check_translation(params[:user_text])
-      @card.update_attributes(successful_checks_counter: @card.successful_checks_counter + 1,
-                              unsuccessful_checks_counter: 0)
+      @card.update_successful_checks_counter
       @card.update_review_date
-
       flash[:success] = "Правильно"
-    elsif @card.successful_checks_counter == 0
-      flash[:error] = "Неправильно"
     else
-      @card.update_attribute(:unsuccessful_checks_counter, @card.unsuccessful_checks_counter + 1)
-
-      if @card.unsuccessful_checks_counter == 3
-        @card.update_attributes(unsuccessful_checks_counter: 0, successful_checks_counter: 0)
-      end
-
+      @card.update_unsuccessful_checks_counter unless @card.successful_checks_counter == 0
       flash[:error] = "Неправильно"
     end
 

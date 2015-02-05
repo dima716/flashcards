@@ -37,4 +37,17 @@ class Card < ActiveRecord::Base
       update_attribute(:retired, true)
     end
   end
+
+  def update_successful_checks_counter
+    update_attributes(successful_checks_counter: successful_checks_counter + 1,
+                      unsuccessful_checks_counter: 0)
+  end
+
+  def update_unsuccessful_checks_counter
+    update_attribute(:unsuccessful_checks_counter, unsuccessful_checks_counter + 1)
+
+    if unsuccessful_checks_counter == 3
+      update_attributes(unsuccessful_checks_counter: 0, successful_checks_counter: 0)
+    end
+  end
 end
