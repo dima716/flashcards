@@ -2,12 +2,9 @@ FactoryGirl.define do
   factory :card do
     original_text "MyString"
     translated_text "MyString"
-    review_date Date.today
+    successful_checks_counter 0
+    unsuccessful_checks_counter 0
     association :user
     association :deck
-
-    factory :card_reviewed do
-      review_date Date.today + 1
-    end
   end
 end
