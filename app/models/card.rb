@@ -26,7 +26,7 @@ class Card < ActiveRecord::Base
       update_successful_checks_counter
       update_review_date
     else
-      update_unsuccessful_checks_counter unless successful_checks_counter == 0
+      update_unsuccessful_checks_counter
       return false
     end
   end
@@ -54,6 +54,8 @@ class Card < ActiveRecord::Base
   end
 
   def update_unsuccessful_checks_counter
+    return false if successful_checks_counter == 0
+
     update_attribute(:unsuccessful_checks_counter, unsuccessful_checks_counter + 1)
 
     if unsuccessful_checks_counter == 3
