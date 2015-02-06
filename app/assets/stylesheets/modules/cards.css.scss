@@ -6,7 +6,7 @@ $translated-text-color: #cc3333;
 
   &-item {
     width: 360px;
-    margin:0 auto 40px;
+    margin: 0 auto 40px;
 
     &-new {
       width: 172px;
@@ -34,6 +34,12 @@ $translated-text-color: #cc3333;
   .cards {
     &-item {
       margin-right: 50px;
+    }
+
+    &-task {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 }
