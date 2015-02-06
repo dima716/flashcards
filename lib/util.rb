@@ -4,4 +4,3 @@ module Util
                          str2.mb_chars.downcase.to_s.strip.squeeze(" "))
   end
 end
-

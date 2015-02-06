@@ -31,7 +31,7 @@ class Card < ActiveRecord::Base
       update_unsuccessful_checks_counter
     end
 
-    return typos_number
+    typos_number
   end
 
   def update_review_date
