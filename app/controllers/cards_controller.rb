@@ -22,7 +22,7 @@ class CardsController < ApplicationController
   end
 
   def check
-    if @card.check_translation(params[:user_text])
+    if @card.review(params[:user_text])
       flash[:success] = "Правильно"
     else
       flash[:error] = "Неправильно"

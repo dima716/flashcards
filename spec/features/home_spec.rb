@@ -27,7 +27,8 @@ describe "Main page" do
     it "should show notification message" do
       user = create(:user, email: "john@example.com", password: "test", password_confirmation: "test")
       deck = create(:deck, name: "Testdeck", user: user)
-      create(:card_reviewed, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
+      card = create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
+      card.update_attribute(:review_date, Time.current + 1.days)
       login_user_post(user.email, "test")
       visit root_url
       expect(page).to have_content "Все карточки повторены"

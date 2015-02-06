@@ -88,8 +88,11 @@ a {
   &-label {
     position: absolute;
     top: -20px;
-    left: 0;
     font-weight: 200;
+
+    &-name {
+      left: 0;
+    }
   }
 }
 
