@@ -68,7 +68,6 @@ a {
   font-size: 14px;
   text-align: center;
   box-shadow: 2px 2px 5px #000;
-  margin-bottom: 40px;
 
   &-new {
     background-color: $new-item-bg-color;
@@ -97,15 +96,10 @@ a {
 }
 
 @media (min-width: 1200px) {
-    .item {
-      display: inline-block;
-      *display: inline;
-      *zoom: 1;
-      vertical-align: top;
-      margin-right: 50px;
-
-      &-task {
-        margin:0;
-      }
-    }
+  .item {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: top;
+  }
 }

@@ -3,13 +3,26 @@ $deck-name-color: #ffcc33;
 .decks {
   font-size: 0;
 
+  &-item {
+    width: 200px;
+    margin:0 auto 20px;
+
+    &-new {
+      width: 121px;
+      height: 124px;
+      line-height: 124px;
+    }
+  }
+
   &-name {
     font-size: 18px;
   }
+}
 
-  &-new {
-    width: 121px;
-    height: 124px;
-    line-height: 124px;
+@media (min-width: 1200px) {
+  .decks {
+    &-item {
+      margin-right: 30px;
+    }
   }
 }

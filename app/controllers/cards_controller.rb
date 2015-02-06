@@ -22,13 +22,21 @@ class CardsController < ApplicationController
   end
 
   def check
-    if @card.review(params[:user_text])
-      flash[:success] = "Правильно"
-    else
-      flash[:error] = "Неправильно"
-    end
+    typos_number = @card.review(params[:user_text])
 
-    redirect_to root_path
+    case typos_number
+    when 0
+      flash[:success] = "Правильно"
+      redirect_to root_path
+    when 1..3
+      flash.now[:success] = "Правильно. Была исправлена опечатка в слове '#{params[:user_text]}'"
+      render "show"
+    else
+      if typos_number > 3
+        flash[:error] = "Неправильно"
+        redirect_to root_path
+      end
+    end
   end
 
   def edit

@@ -1,0 +1,14 @@
+<div class="item cards-item cards-task">
+  <div class="label label-info label-lg item-label item-label-name"><%= card.deck.name %></div>
+  <% if card.picture_file_name %>
+    <div class="item-panel item-picture">
+      <%= image_tag card.picture.url(:medium) %>
+    </div>
+  <% end %>
+  <div class="item-panel cards-text-original">
+    <%= card.original_text %>
+  </div>
+  <div class="item-panel cards-text-translated">
+    <%= card.translated_text %>
+  </div>
+</div>

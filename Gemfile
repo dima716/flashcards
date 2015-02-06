@@ -32,6 +32,8 @@ gem 'figaro'
 gem "paperclip", "~> 4.2"
 # Using Amazon's S3 file hosting service
 gem 'aws-sdk'
+# Fast string edit distance computation, using the Damerau-Levenshtein algorithm
+gem 'levenshtein-ffi'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
