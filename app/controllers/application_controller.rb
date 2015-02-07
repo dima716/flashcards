@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
   def not_authenticated
     redirect_to login_path, flash: { error: "Пожалуйста, войдите для просмотра страницы" }
   end
+
+  def current_deck
+    current_user.current_deck
+  end
+
+  helper_method :current_deck
 end
