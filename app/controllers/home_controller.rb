@@ -1,11 +1,9 @@
 class HomeController < ApplicationController
   def index
-    if current_deck
-      unless @card = current_deck.cards.for_review.first
-        flash.now[:reviewed] = "Все карточки повторены"
-      end
-    elsif current_user.cards.present?
-      unless @card = current_user.cards.for_review.first
+    cards = current_deck ? current_deck.cards : current_user.cards
+
+    if cards.present?
+      unless @card = cards.for_review.first
         flash.now[:reviewed] = "Все карточки повторены"
       end
     else
@@ -18,3 +16,4 @@ class HomeController < ApplicationController
     render "index"
   end
 end
+
