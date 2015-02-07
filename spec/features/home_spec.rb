@@ -80,7 +80,7 @@ describe "Main page" do
       login_user_post(user.email, "john")
       visit root_url
       fill_in("user_text", with: "Тесд")
-      click_button('Проверить')
+      click_button("Проверить")
       expect(page).to have_content("Правильно. Была исправлена опечатка в слове 'Тесд'")
     end
   end
