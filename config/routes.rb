@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get "logout", to: "user_sessions#destroy", as: "logout"
 
   resources :decks, except: [:show] do
-    resources :cards, except: [:show]
+    resources :cards
   end
 
   post "check", to: "cards#check", as: "check_card"

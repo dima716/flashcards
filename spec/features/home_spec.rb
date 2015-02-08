@@ -71,4 +71,17 @@ describe "Main page" do
       expect(page).to have_content("Test current")
     end
   end
+
+  context "when user made a typo" do
+    it "should show notification about the typo" do
+      user = create(:user, email: "john@example.com", password: "john", password_confirmation: "john")
+      deck = create(:deck, name: "Deck", user: user)
+      create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
+      login_user_post(user.email, "john")
+      visit root_url
+      fill_in("user_text", with: "Тесд")
+      click_button("Проверить")
+      expect(page).to have_content("Правильно. Была исправлена опечатка в слове 'Тесд'")
+    end
+  end
 end

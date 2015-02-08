@@ -4,8 +4,22 @@ $translated-text-color: #cc3333;
 .cards {
   font-size: 0;
 
-  &-text {
+  &-item {
+    width: 360px;
+    margin: 0 auto 40px;
 
+    &-new {
+      width: 172px;
+      height: 206px;
+      line-height: 206px;
+    }
+  }
+
+  &-task {
+    margin-bottom: 20px;
+  }
+
+  &-text {
     &-original {
       color: $original-text-color;
     }
@@ -14,10 +28,18 @@ $translated-text-color: #cc3333;
       color: $translated-text-color;
     }
   }
+}
 
-  &-new {
-    width: 172px;
-    height: 206px;
-    line-height: 206px;
+@media (min-width: 1200px) {
+  .cards {
+    &-item {
+      margin-right: 50px;
+    }
+
+    &-task {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }

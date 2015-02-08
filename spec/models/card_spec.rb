@@ -19,29 +19,29 @@ describe Card do
     context "expect return true when user wrote" do
       it "a lowercase right word" do
         correct_translation = "пока"
-        expect(card.check_translation(correct_translation)).to be true
+        expect(card.check_translation(correct_translation)).to be 0
       end
 
       it "a capitalized right word" do
         correct_translation = "Пока"
-        expect(card.check_translation(correct_translation)).to be true
+        expect(card.check_translation(correct_translation)).to be 0
       end
 
       it "a right word with a space" do
         correct_translation = "Пока "
-        expect(card.check_translation(correct_translation)).to be true
+        expect(card.check_translation(correct_translation)).to be 0
       end
 
       it "a right phrase" do
         correct_translation = "Доброе     утро"
-        expect(card_with_phrase.check_translation(correct_translation)).to be true
+        expect(card_with_phrase.check_translation(correct_translation)).to be 0
       end
     end
 
     context "expect return false when user wrote" do
       it "a wrong word" do
         incorrect_translation = "привет"
-        expect(card.check_translation(incorrect_translation)).to be false
+        expect(card.check_translation(incorrect_translation)).to be > 0
       end
     end
   end

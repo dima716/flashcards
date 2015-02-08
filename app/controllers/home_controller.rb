@@ -1,11 +1,11 @@
 class HomeController < ApplicationController
   def index
-    if current_deck = current_user.current_deck
-      @cards = current_deck.cards
-      flash.now[:reviewed] = "Все карточки повторены" unless @card = @cards.for_review.first
-    elsif current_user.cards.present?
-      @cards = current_user.cards
-      flash.now[:reviewed] = "Все карточки повторены" unless @card = @cards.for_review.first
+    cards = current_deck ? current_deck.cards : current_user.cards
+
+    if cards.present?
+      unless @card = cards.for_review.first
+        flash.now[:reviewed] = "Все карточки повторены"
+      end
     else
       flash[:empty] = "Для начала упражнений необходимо добавить карточки"
       redirect_to decks_path

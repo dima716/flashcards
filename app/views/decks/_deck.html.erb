@@ -1,6 +1,6 @@
-<li class="item">
-  <% if current_user.current_deck == deck %>
-    <div class="label label-info label-lg item-label">Текущая колода</div>
+<li class="item decks-item">
+  <% if current_deck == deck %>
+    <div class="label label-info label-lg item-label item-label-name">Текущая колода</div>
   <% end %>
   <% if deck.picture_file_name %>
     <div class="item-panel item-picture">
@@ -10,7 +10,7 @@
   <div class="item-panel">
     <%= link_to deck.name, deck_cards_path(deck), class: "btn btn-primary" %>
   </div>
-  <% if current_user.current_deck != deck %>
+  <% if current_deck != deck %>
     <div class="item-panel">
       <%= link_to "Сделать текущей", set_current_path(deck), method: :put %>
     </div>

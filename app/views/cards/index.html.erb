@@ -2,7 +2,7 @@
 
 <ul class="cards">
   <%= render @deck.cards %>
-  <li class="item item-new cards-new">
+  <li class="item item-new cards-item cards-item-new">
     <%= link_to "Добавить <br> карточку".html_safe, new_deck_card_path(@deck), class: "btn btn-sm btn-primary" %>
   </li>
 </ul>

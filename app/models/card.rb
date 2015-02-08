@@ -22,13 +22,16 @@ class Card < ActiveRecord::Base
   end
 
   def review(user_text)
-    if check_translation(user_text)
+    typos_number = check_translation(user_text)
+
+    if typos_number <= 3
       update_successful_checks_counter
       update_review_date
     else
       update_unsuccessful_checks_counter
-      return false
     end
+
+    typos_number
   end
 
   def update_review_date

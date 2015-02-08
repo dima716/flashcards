@@ -1,7 +1,7 @@
 <% if @current_user %>
   <% if @card %>
     <div class="cards text-center">
-      <%= render "cards/card_task", card: @card %>
+      <%= render "cards/task", card: @card %>
     </div>
   <% end %>
 <% else %>
