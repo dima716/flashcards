@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'super_memo_2'
 
 describe Card do
   let(:user) { create(:user, email: "john@example.com", password: "test", password_confirmation: "test") }
@@ -10,7 +11,7 @@ describe Card do
   it { is_expected.not_to respond_to(:check_translation).with(0).arguments }
 
   context "#set_review_date" do
-    it "should set card review date before creating card" do
+    it "should set card's review date before creating card" do
       expect(card.review_date).to_not be_nil
     end
   end
@@ -46,12 +47,18 @@ describe Card do
     end
   end
 
-  context "#update_review_date" do
-    it "should update card review date" do
+  context "review with SuperMemo2 algorithm" do
+    it "should update card's review date when score is more or equal 3" do
       old_review_date = card.review_date
-      card.update_successful_checks_counter
-      card.update_review_date
+      SuperMemo2.new(card).review(3)
+      card.save
       expect(card.review_date).to be > old_review_date
+    end
+
+    it "should reset card's repetition_number when score is less than 3" do
+      SuperMemo2.new(card).review(2)
+      card.save
+      expect(card.repetition_number).to be 0
     end
   end
 end

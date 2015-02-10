@@ -1,6 +1,8 @@
+require 'super_memo_2'
+
 class CardsController < ApplicationController
-  before_action :get_deck, except: [:check]
-  before_action :get_card, only: [:check, :edit, :update, :destroy]
+  before_action :get_deck, except: [:check, :review]
+  before_action :get_card, only: [:check, :review, :edit, :update, :destroy]
 
   def new
     @card = @deck.cards.new
@@ -22,20 +24,28 @@ class CardsController < ApplicationController
   end
 
   def check
-    typos_number = @card.review(params[:user_text])
+    typos_number = @card.check_translation(params[:user_text])
 
     case typos_number
     when 0
-      flash[:success] = "Правильно"
-      redirect_to root_path
+      flash.now[:success] = "Правильно"
     when 1..3
       flash.now[:success] = "Правильно. Была исправлена опечатка в слове '#{params[:user_text]}'"
-      render "show"
     else
       if typos_number > 3
-        flash[:error] = "Неправильно"
-        redirect_to root_path
+        flash.now[:error] = "Неправильно"
       end
+    end
+
+    render "show"
+  end
+
+  def review
+    SuperMemo2.new(@card).review(params[:score].to_i)
+    if @card.save
+      redirect_to root_path
+    else
+      render "review"
     end
   end
 

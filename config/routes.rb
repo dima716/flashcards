@@ -12,7 +12,8 @@ Rails.application.routes.draw do
     resources :cards
   end
 
-  post "check", to: "cards#check", as: "check_card"
+  put "check", to: "cards#check", as: "check_card"
+  put "review", to: "cards#review", as: "review_card"
 
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback" # for use with Github, Facebook
