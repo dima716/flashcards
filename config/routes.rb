@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   put "check", to: "cards#check", as: "check_card"
-  put "review", to: "cards#review", as: "review_card"
+  put "review", to: "cards#set_score", as: "set_score_card"
 
   post "oauth/callback", to: "oauths#callback"
   get "oauth/callback", to: "oauths#callback" # for use with Github, Facebook

@@ -1,8 +1,8 @@
 require 'super_memo_2'
 
 class CardsController < ApplicationController
-  before_action :get_deck, except: [:check, :review]
-  before_action :get_card, only: [:check, :review, :edit, :update, :destroy]
+  before_action :get_deck, except: [:check, :set_score]
+  before_action :get_card, only: [:check, :set_score, :edit, :update, :destroy]
 
   def new
     @card = @deck.cards.new
@@ -40,7 +40,7 @@ class CardsController < ApplicationController
     render "show"
   end
 
-  def review
+  def set_score
     attributes = SuperMemo2.new(score: params[:score].to_i,
                                 repetition_number: @card.repetition_number,
                                 repetition_interval: @card.repetition_interval,
@@ -49,7 +49,7 @@ class CardsController < ApplicationController
     if @card.update(attributes)
       redirect_to root_path
     else
-      render "review"
+      render "show"
     end
   end
 

@@ -1,29 +1,43 @@
 class SuperMemo2
-  def initialize(options)
-    @score = options[:score]
-    @repetition_number = options[:repetition_number]
-    @repetition_interval = options[:repetition_interval]
-    @ef = options[:ef]
+
+  def initialize(score: nil,
+                 repetition_number: nil,
+                 repetition_interval: nil,
+                 ef: nil)
+
+    @score = score
+    @repetition_number = repetition_number
+    @repetition_interval = repetition_interval
+    @ef = ef
     @review_date = nil
   end
 
   def review
     if @score > 2
-      update_ef(@score)
+      update_ef
       update_repetition_interval
       update_review_date
-      { ef: @ef, repetition_number: @repetition_number, repetition_interval: @repetition_interval, score: @score, review_date: @review_date }
+      {
+        ef: @ef,
+        repetition_number: @repetition_number,
+        repetition_interval: @repetition_interval,
+        score: @score,
+        review_date: @review_date
+      }
     else
       @repetition_number = 0
-      { repetition_number: @repetition_number, score: @score }
+      {
+        repetition_number: @repetition_number,
+        score: @score
+      }
     end
   end
 
   private
 
-  def update_ef(score)
+  def update_ef
     # count easy factor using formula from http://www.supermemo.com/english/ol/sm2.htm
-    new_ef = @ef + (0.1 - (5 - score) * (0.08 + (5 - score) * 0.02))
+    new_ef = @ef + (0.1 - (5 - @score) * (0.08 + (5 - @score) * 0.02))
     @ef = [new_ef, 1.3].max
   end
 
