@@ -41,8 +41,13 @@ class CardsController < ApplicationController
   end
 
   def review
-    SuperMemo2.new(@card).review(params[:score].to_i)
-    if @card.save
+    attributes = SuperMemo2.new(score: params[:score].to_i,
+                                repetition_number: @card.repetition_number,
+                                repetition_interval: @card.repetition_interval,
+                                ef: @card.ef).review
+
+    if @card.update(attributes)
+      @card.update_review_date
       redirect_to root_path
     else
       render "review"

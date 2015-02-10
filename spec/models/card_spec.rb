@@ -50,14 +50,21 @@ describe Card do
   context "review with SuperMemo2 algorithm" do
     it "should update card's review date when score is more or equal 3" do
       old_review_date = card.review_date
-      SuperMemo2.new(card).review(3)
-      card.save
+      attributes = SuperMemo2.new(score: 3,
+                                  repetition_number: card.repetition_number,
+                                  repetition_interval: card.repetition_interval,
+                                  ef: card.ef).review
+      card.update(attributes)
+      card.update_review_date
       expect(card.review_date).to be > old_review_date
     end
 
     it "should reset card's repetition_number when score is less than 3" do
-      SuperMemo2.new(card).review(2)
-      card.save
+      attributes = SuperMemo2.new(score: 2,
+                                  repetition_number: card.repetition_number,
+                                  repetition_interval: card.repetition_interval,
+                                  ef: card.ef).review
+      card.update(attributes)
       expect(card.repetition_number).to be 0
     end
   end
