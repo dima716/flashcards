@@ -55,7 +55,6 @@ describe Card do
                                   repetition_interval: card.repetition_interval,
                                   ef: card.ef).review
       card.update(attributes)
-      card.update_review_date
       expect(card.review_date).to be > old_review_date
     end
 

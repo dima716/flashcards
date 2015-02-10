@@ -47,7 +47,6 @@ class CardsController < ApplicationController
                                 ef: @card.ef).review
 
     if @card.update(attributes)
-      @card.update_review_date
       redirect_to root_path
     else
       render "review"

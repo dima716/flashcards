@@ -20,8 +20,4 @@ class Card < ActiveRecord::Base
   def set_review_date
     self.review_date = Time.current
   end
-
-  def update_review_date
-    update_attribute(:review_date, Time.current + repetition_interval.days)
-  end
 end

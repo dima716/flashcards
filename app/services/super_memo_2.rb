@@ -4,13 +4,15 @@ class SuperMemo2
     @repetition_number = options[:repetition_number]
     @repetition_interval = options[:repetition_interval]
     @ef = options[:ef]
+    @review_date = nil
   end
 
   def review
     if @score > 2
       update_ef(@score)
       update_repetition_interval
-      { ef: @ef, repetition_number: @repetition_number, repetition_interval: @repetition_interval, score: @score }
+      update_review_date
+      { ef: @ef, repetition_number: @repetition_number, repetition_interval: @repetition_interval, score: @score, review_date: @review_date }
     else
       @repetition_number = 0
       { repetition_number: @repetition_number, score: @score }
@@ -38,5 +40,9 @@ class SuperMemo2
         @repetition_interval *= @ef
       end
     end
+  end
+
+  def update_review_date
+    @review_date = Time.current + @repetition_interval.days
   end
 end
