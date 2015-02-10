@@ -18,8 +18,8 @@ class SuperMemo2
   private
 
   def update_ef(score)
-      new_ef = @card.ef + (0.1 - (5 - score) * (0.08 + (5 - score) * 0.02))
-      @card.ef = new_ef < 1.3 ? 1.3 : new_ef
+    new_ef = @card.ef + (0.1 - (5 - score) * (0.08 + (5 - score) * 0.02))
+    @card.ef = new_ef < 1.3 ? 1.3 : new_ef
   end
 
   def update_repetition_interval
