@@ -70,5 +70,8 @@ group :test do
 
   # Strategies for cleaning databases in Ruby
   gem 'database_cleaner'
+
+  # A gem providing "time travel", "time freezing", and "time acceleration" capabilities
+  gem 'timecop'
 end
 

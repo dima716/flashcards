@@ -29,6 +29,7 @@ describe "Main page" do
       deck = create(:deck, name: "Testdeck", user: user)
       card = create(:card, original_text: "Test", translated_text: "Тест", user: user, deck: deck)
       card.update_attribute(:review_date, Time.current + 1.days)
+      card.update_attribute(:score, 4)
       login_user_post(user.email, "test")
       visit root_url
       expect(page).to have_content "Все карточки повторены"

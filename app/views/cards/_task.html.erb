@@ -8,7 +8,7 @@
   <div class="item-panel cards-text-original">
     <%= card.original_text %>
   </div>
-  <%= form_tag check_card_path, class: "check-card" do %>
+  <%= form_tag check_card_path, method: :put, class: "check-card" do %>
     <div class="item-panel cards-text-translated">
       <%= hidden_field_tag :id, card.id %>
       <%= text_field_tag :user_text, nil, placeholder: "Введите перевод" %>

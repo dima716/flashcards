@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'super_memo_2'
 
 describe Card do
   let(:user) { create(:user, email: "john@example.com", password: "test", password_confirmation: "test") }
@@ -10,7 +11,7 @@ describe Card do
   it { is_expected.not_to respond_to(:check_translation).with(0).arguments }
 
   context "#set_review_date" do
-    it "should set card review date before creating card" do
+    it "should set card's review date before creating card" do
       expect(card.review_date).to_not be_nil
     end
   end
@@ -43,15 +44,6 @@ describe Card do
         incorrect_translation = "привет"
         expect(card.check_translation(incorrect_translation)).to be > 0
       end
-    end
-  end
-
-  context "#update_review_date" do
-    it "should update card review date" do
-      old_review_date = card.review_date
-      card.update_successful_checks_counter
-      card.update_review_date
-      expect(card.review_date).to be > old_review_date
     end
   end
 end

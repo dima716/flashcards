@@ -12,3 +12,21 @@
     <%= card.translated_text %>
   </div>
 </div>
+
+<% if flash[:success] %>
+  <h4>Оцените сложность воспоминания карточки</h4>
+  <div class="btn-group">
+    <%= link_to "Легко", set_score_card_path(id: card.id, score: 5), method: :put, class: "btn btn-md btn-success" %>
+    <%= link_to "Средне", set_score_card_path(id: card.id, score: 4), method: :put, class: "btn btn-md btn-warning" %>
+    <%= link_to "Тяжело", set_score_card_path(id: card.id, score: 3), method: :put, class: "btn btn-md btn-danger" %>
+  </div>
+<% else %>
+  <h4>Оцените сложность воспоминания карточки после просмотра правильного варианта</h4>
+  <div class="btn-group">
+    <%= link_to "Сразу вспомнил", set_score_card_path(id: card.id, score: 2), method: :put, class: "btn btn-md btn-success" %>
+    <%= link_to "Вспомнил с трудом", set_score_card_path(id: card.id, score: 1), method: :put, class: "btn btn-md btn-warning" %>
+    <%= link_to "Вообще не вспомнил", set_score_card_path(id: card.id, score: 0), method: :put, class: "btn btn-md btn-danger" %>
+  </div>
+<% end %>
+
+
